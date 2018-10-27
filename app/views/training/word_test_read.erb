@@ -1,14 +1,25 @@
 <% TestBankWord.all.each do |x| %>
-    <div id = "word_test_read_<%= x.id %>" >
+    <div id = "word_test_read_<%= x.id %>" class="ui form" >
     <%= x.question %>
     <%= x.example %>
         <form action = "/training/word_test_create" accept-charset="utf-8" name = "word_test_read_<%= x.id %>" method = "post"> 
             <div class="ui radio checkbox">
-                <input type="radio" value="<%= x.option.split(",")[0] %>" name="Q<% x.id %>"><%= x.option.split(",")[0] %>
-                <input type="radio" value="<%= x.option.split(",")[1] %>" name="Q<% x.id %>"><%= x.option.split(",")[1] %>
-                <input type="radio" value="<%= x.option.split(",")[2] %>" name="Q<% x.id %>"><%= x.option.split(",")[2] %>
-                <input type="radio" value="<%= x.option.split(",")[3] %>" name="Q<% x.id %>"><%= x.option.split(",")[3] %>
+                <label><%= x.option.split(",")[0] %></label> 
+                <input type="radio" value="<%= x.option.split(",")[0] %>" name="Q<%= x.id %>">
             </div>
+            <div class="ui radio checkbox">
+                <label><%= x.option.split(",")[1] %></label> 
+                <input type="radio" value="<%= x.option.split(",")[1] %>" name="Q<%= x.id %>">
+            </div>
+            <div class="ui radio checkbox">
+                <label><%= x.option.split(",")[2] %></label> 
+                <input type="radio" value="<%= x.option.split(",")[2] %>" name="Q<%= x.id %>">
+            </div>
+            <div class="ui radio checkbox">
+                <label><%= x.option.split(",")[3] %></label> 
+                <input type="radio" value="<%= x.option.split(",")[3] %>" name="Q<%= x.id %>">
+            </div>
+            
             <input type = "submit" value = "보내기"/>
         </form>
     </div>

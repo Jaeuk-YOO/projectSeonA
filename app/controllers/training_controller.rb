@@ -6,6 +6,7 @@ class TrainingController < ApplicationController
     end
 
     def word_test_create
+
     end
 
     
