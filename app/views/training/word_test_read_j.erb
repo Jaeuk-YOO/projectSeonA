@@ -1,0 +1,40 @@
+<div class="ui container">
+<br>
+<% TestBankWord.all.each do |x| %>
+    <div id = "word_test_read_<%= x.id %>" class="ui form" >
+    <h1><%= x.question %></h1>
+    <h1><%= x.example %></h1>
+    <div class="grouped fields buttons">
+        <div class="ui buttons">
+            <button class="ui button massive" id="btn_<%=x.id%>_1"><%= x.option.delete(" ").split(",")[0] %></button>
+            <button class="ui button massive" id="btn_<%=x.id%>_2"><%= x.option.delete(" ").split(",")[1] %></button>
+            <button class="ui button massive" id="btn_<%=x.id%>_3"><%= x.option.delete(" ").split(",")[2] %></button>
+            <button class="ui button massive" id="btn_<%=x.id%>_4"><%= x.option.delete(" ").split(",")[3] %></button>
+        </div>
+        <form action = "/training/word_test_create"  method="post"> 
+            <input type="hidden" name="button_val_<%=x.id%>" id="button_val_<%=x.id%>">
+            <br>
+            <button type = "submit">정답 보내기</button>
+        </form>
+        </div>
+    </div>
+<% end %>
+</div>
+<script>
+$(document).ready(function(){
+    <% TestBankWord.all.each do |y| %>
+    $("#btn_<%=y.id%>_1").click(function(){
+        $("input#button_val_<%=y.id%>").attr("value", "<%= y.option.delete(" ").split(",")[0] %>");
+    });
+    $("#btn_<%=y.id%>_2").click(function(){
+        $("input#button_val_<%=y.id%>").attr("value", "<%= y.option.delete(" ").split(",")[1] %>");
+    });
+    $("#btn_<%=y.id%>_3").click(function(){
+        $("input#button_val_<%=y.id%>").attr("value", "<%= y.option.delete(" ").split(",")[2] %>");
+    });
+    $("#btn_<%=y.id%>_4").click(function(){
+        $("input#button_val_<%=y.id%>").attr("value", "<%= y.option.delete(" ").split(",")[3] %>");
+    });
+    <%end%>
+});
+</script>
