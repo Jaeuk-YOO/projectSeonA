@@ -1,0 +1,2 @@
+class UserAnswerLine < ApplicationRecord
+end

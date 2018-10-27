@@ -1,0 +1,2 @@
+class TestBankParagraph < ApplicationRecord
+end
