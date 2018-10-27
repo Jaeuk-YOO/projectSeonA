@@ -1,0 +1,2 @@
+class TestBankLine < ApplicationRecord
+end

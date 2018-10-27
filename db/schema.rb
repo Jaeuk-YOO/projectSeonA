@@ -10,7 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181027115815) do
+ActiveRecord::Schema.define(version: 20181027144709) do
+
+  create_table "test_bank_lines", force: :cascade do |t|
+    t.string   "question",   default: "", null: false
+    t.string   "example",    default: "", null: false
+    t.string   "option",     default: "", null: false
+    t.string   "correct",    default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "test_bank_paragraphs", force: :cascade do |t|
+    t.string   "question",   default: "", null: false
+    t.string   "example",    default: "", null: false
+    t.string   "option",     default: "", null: false
+    t.string   "correct",    default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "test_bank_words", force: :cascade do |t|
+    t.string   "question",   default: "", null: false
+    t.string   "example",    default: "", null: false
+    t.string   "option",     default: "", null: false
+    t.string   "correct",    default: "", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "user_answer_lines", force: :cascade do |t|
+    t.string   "answer",            default: "", null: false
+    t.string   "test_bank_line_id", default: "", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "user_answer_paragraphs", force: :cascade do |t|
+    t.string   "answer",                 default: "", null: false
+    t.string   "test_bank_paragraph_id", default: "", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  create_table "user_answer_words", force: :cascade do |t|
+    t.string   "answer",            default: "", null: false
+    t.string   "test_bank_word_id", default: "", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "user_details", force: :cascade do |t|
     t.string   "user_id",    default: "", null: false

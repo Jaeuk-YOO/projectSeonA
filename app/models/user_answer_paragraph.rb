@@ -1,0 +1,2 @@
+class UserAnswerParagraph < ApplicationRecord
+end

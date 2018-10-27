@@ -1,0 +1,2 @@
+class TestBankWord < ApplicationRecord
+end
