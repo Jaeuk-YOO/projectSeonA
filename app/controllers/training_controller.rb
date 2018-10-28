@@ -18,7 +18,7 @@ class TrainingController < ApplicationController
         else
             user_result_word.is_correct = 0
         end
-
+        #user_result_word.user_detail_id = current_user.user_detail.id
         user_result_word.save
     end
 
