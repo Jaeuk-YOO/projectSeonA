@@ -3,7 +3,13 @@
 <% TestBankWord.all.each do |x| %>
     <div id = "word_test_read_<%= x.id %>" class="ui" style="display:none;" >
         <h1><%= x.question %></h1>
-        <h1><%= x.example %></h1>
+        <div class="ui row">
+            <h1><%= x.example %></h1>
+            <button class="ui button blue" id="audio_word_test_read_<%= x.id %>"> 소리 듣기 </button>
+            <audio id="audio_word_test_read_<%= x.id %>"> 
+                <source src="https://tts-translate.kakao.com/newtone?message=<%=x.example%>">
+            </audio>
+        </div>
         <div class="row">
             <div class="ui buttons">
                 <button class="ui button massive" id="btn_<%=x.id%>_1"><%= x.option.delete(" ").split(",")[0] %></button>
@@ -14,8 +20,6 @@
             </div>
             <br>
                 <input type="hidden" name="user_answer" id="button_val_<%=x.id%>">
-                <input type="hidden" name="test_answer" value="<%=x.correct%>">
-                <input type="hidden" name="test_id" value="<%=x.id%>">
                 <br>
                 <button class="ui blue button" id="btn_word_test_read_<%= x.id %>">정답 보내기</button>
         </div>
@@ -26,6 +30,11 @@
 $(document).ready(function(){
     $("#word_test_read_1").css("display", "block");
     <% TestBankWord.all.each do |y| %>
+    
+    $("button#audio_word_test_read_<%= y.id %>").click(function(){
+        $("audio#audio_word_test_read_<%= y.id %>").get(0).play()
+    });
+    
     $("#btn_<%=y.id%>_1").click(function(){
         $("input#button_val_<%=y.id%>").attr("value", "<%= y.option.delete(" ").split(",")[0] %>");
     });
@@ -49,7 +58,6 @@ $(document).ready(function(){
     });
     <%end%>
     
-    
-    
+   
 });
 </script>
