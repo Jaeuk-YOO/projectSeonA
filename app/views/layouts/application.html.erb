@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProjectSeonA</title>
+    <title>프로젝트 선;아</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" type="text/css" href="/assets/semantic.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="/assets/semantic.js"></script>
+
   </head>
 
   <body>
+    <div class="ui secondary menu container">
+      <a class="active item" href="/">Home</a>
+      <a class="item">
+        Messages
+      </a>
+      <a class="item">
+        Friends
+      </a>
+      <div class="right menu">
+        <div class="item">
+          <div class="ui icon input">
+            <input type="text" placeholder="Search...">
+            <i class="search link icon"></i>
+          </div>
+        </div>
+        <%if user_signed_in?%>
+        <a class="ui item" href="/users/sign_out" data-method="delete">
+          Logout
+        </a>
+        <%else%>
+        <a class="ui item" href="/users/sign_in">
+          Login
+        </a>
+        <%end%>
+      </div>
+    </div>    
+
     <%= yield %>
   </body>
 </html>
