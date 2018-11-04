@@ -1,3 +1,3 @@
 class TbUserWordResult < ApplicationRecord
-    belongs_to :user_detail
+    #belongs_to :user_detail
 end
