@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserResultLineTest < ActiveSupport::TestCase
+class TbUserWordResultTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

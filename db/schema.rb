@@ -10,7 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181027203122) do
+ActiveRecord::Schema.define(version: 20181104053840) do
+
+  create_table "tb_user_line_inputs", force: :cascade do |t|
+    t.string   "test_bank_line_user_input", default: "", null: false
+    t.string   "test_bank_line_id",         default: "", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  create_table "tb_user_line_results", force: :cascade do |t|
+    t.string   "test_bank_line_user_input", default: "", null: false
+    t.string   "test_bank_line_id",         default: "", null: false
+    t.string   "is_correct",                default: "", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  create_table "tb_user_paragraph_inputs", force: :cascade do |t|
+    t.string   "test_bank_paragraph_user_input", default: "", null: false
+    t.string   "test_bank_paragraph_id",         default: "", null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  create_table "tb_user_paragraph_results", force: :cascade do |t|
+    t.string   "test_bank_paragraph_user_input", default: "", null: false
+    t.string   "test_bank_paragraph_id",         default: "", null: false
+    t.string   "is_correct",                     default: "", null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  create_table "tb_user_word_inputs", force: :cascade do |t|
+    t.string   "test_bank_word_user_input", default: "", null: false
+    t.string   "test_bank_word_id",         default: "", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  create_table "tb_user_word_results", force: :cascade do |t|
+    t.string   "test_bank_word_user_input", default: "", null: false
+    t.string   "test_bank_word_id",         default: "", null: false
+    t.string   "is_correct",                default: "", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
 
   create_table "test_bank_lines", force: :cascade do |t|
     t.string   "question",   default: "", null: false
@@ -39,56 +84,10 @@ ActiveRecord::Schema.define(version: 20181027203122) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "user_answer_lines", force: :cascade do |t|
-    t.string   "answer",            default: "", null: false
-    t.string   "test_bank_line_id", default: "", null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-  end
-
-  create_table "user_answer_paragraphs", force: :cascade do |t|
-    t.string   "answer",                 default: "", null: false
-    t.string   "test_bank_paragraph_id", default: "", null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  create_table "user_answer_words", force: :cascade do |t|
-    t.string   "answer",            default: "", null: false
-    t.string   "test_bank_word_id", default: "", null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-  end
-
   create_table "user_details", force: :cascade do |t|
     t.string   "user_id",    default: "", null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-  end
-
-  create_table "user_result_lines", force: :cascade do |t|
-    t.string   "line_user_answer",    default: "", null: false
-    t.string   "test_result_line_id", default: "", null: false
-    t.string   "line_answer_correct", default: "", null: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-  end
-
-  create_table "user_result_paragraphs", force: :cascade do |t|
-    t.string   "paragraph_user_answer",    default: "", null: false
-    t.string   "test_result_paragraph_id", default: "", null: false
-    t.string   "paragraph_answer_correct", default: "", null: false
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-  end
-
-  create_table "user_result_words", force: :cascade do |t|
-    t.string   "user_answer",  default: "", null: false
-    t.string   "test_word_id", default: "", null: false
-    t.string   "is_correct",   default: "", null: false
-    t.string   "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
   end
 
   create_table "users", force: :cascade do |t|

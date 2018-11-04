@@ -1,0 +1,3 @@
+class TbUserLineInput < ApplicationRecord
+    
+end
