@@ -12,13 +12,13 @@ class MypageController < ApplicationController
             a.unpack("U*").pop
         end
 
-        class String
-            def succ
-                head = self.unpack('U*')
-                tail = head.pop
-                return head.pack('U*') + [tail + 1].pack('U*')
-            end 
-        end
+        #class String
+        #    def succ
+        #        head = self.unpack('U*')
+        #        tail = head.pop
+        #        return head.pack('U*') + [tail + 1].pack('U*')
+        #    end 
+        #end
 
         def split( ch )
             offset = unicode_of("가")
@@ -32,10 +32,21 @@ class MypageController < ApplicationController
             print @jongsung_list[ (unicode-offset) % @jongsung_list.length ] + ")\n"  
         end
 
-        
         #("가".."힣").each{|x| split(x)}
-        "밥물".split("").each do |x|
-            split(x)
+        #"밥물".split("").each do |x|
+        #    split(x)
+        #end
+        @tb_user_word_array = []
+        @tb_correct_word_array = []
+        TbUserWordResult.all.each do |x|
+            if x.is_correct == 1
+                pass
+            else
+                test_bank_word_id = x.test_bank_word_id
+                test_bank_word_correct = TestBankWord.find(test_bank_word_id).correct
+                @tb_user_word_array.push(x.test_bank_word_user_input)
+                @tb_correct_word_array.push(test_bank_word_correct)
+            end
         end
     end
 end

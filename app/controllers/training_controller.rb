@@ -14,7 +14,7 @@ class TrainingController < ApplicationController
         tb_user_word_input.test_bank_word_id = params[:test_id]
         tb_user_word_input.save
 
-        tb_user_word_result = UserResultWord.new
+        tb_user_word_result = TbUserWordResult.new
         tb_user_word_result.test_bank_word_user_input = params[:user_answer]
         tb_user_word_result.test_bank_word_id = params[:test_id]
         if params[:user_answer] == params[:test_answer]
