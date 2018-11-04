@@ -1,27 +1,30 @@
 <div class="ui container">
 <br>
 <% TestBankWord.all.each do |x| %>
-    <div id = "word_test_read_<%= x.id %>" class="ui" style="display:none;" >
-        <h1><%= x.question %></h1>
-        <div class="ui row">
-            <h1><%= x.example %></h1>
-            <button class="ui button blue" id="audio_word_test_read_<%= x.id %>"> 소리 듣기 </button>
-            <audio id="audio_word_test_read_<%= x.id %>"> 
-                <source src="https://tts-translate.kakao.com/newtone?message=<%=x.example%>">
-            </audio>
-        </div>
-        <div class="row">
-            <div class="ui buttons">
-                <button class="ui button massive" id="btn_<%=x.id%>_1"><%= x.option.delete(" ").split(",")[0] %></button>
-                <button class="ui button massive" id="btn_<%=x.id%>_2"><%= x.option.delete(" ").split(",")[1] %></button>
-                <button class="ui button massive" id="btn_<%=x.id%>_3"><%= x.option.delete(" ").split(",")[2] %></button>
-                <button class="ui button massive" id="btn_<%=x.id%>_4"><%= x.option.delete(" ").split(",")[3] %></button>
-                <br>
-            </div>
+    <div class="ui grid centered" id = "word_test_read_<%= x.id %>" style="display:none;" >
+        <div class="colmun">
+            <h1><%= x.question %></h1>
             <br>
-                <input type="hidden" name="user_answer" id="button_val_<%=x.id%>">
+            <div class="ui row">
+                <span style="font-size:24px; font-weight:700"><%= x.example %></span> &nbsp;&nbsp;&nbsp;
+                <button class="ui button blue" id="audio_word_test_read_<%= x.id %>"> 소리 듣기 </button><br><br>
+                <audio id="audio_word_test_read_<%= x.id %>"> 
+                    <source src="https://tts-translate.kakao.com/newtone?message=<%=x.example%>">
+                </audio>
+            </div>
+            <div class="row">
+                <div class="ui">
+                    <button class="ui button massive" id="btn_<%=x.id%>_1"><%= x.option.delete(" ").split(",")[0] %></button>
+                    <button class="ui button massive" id="btn_<%=x.id%>_2"><%= x.option.delete(" ").split(",")[1] %></button>
+                    <button class="ui button massive" id="btn_<%=x.id%>_3"><%= x.option.delete(" ").split(",")[2] %></button>
+                    <button class="ui button massive" id="btn_<%=x.id%>_4"><%= x.option.delete(" ").split(",")[3] %></button>
+                    <br>
+                </div>
                 <br>
-                <button class="ui blue button" id="btn_word_test_read_<%= x.id %>">정답 보내기</button>
+                    <input type="hidden" name="user_answer" id="button_val_<%=x.id%>">
+                    <br>
+                    <button class="ui blue button" id="btn_word_test_read_<%= x.id %>">정답 보내기</button>
+            </div>
         </div>
     </div>
 <% end %>
