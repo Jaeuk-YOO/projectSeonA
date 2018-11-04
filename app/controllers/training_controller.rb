@@ -9,17 +9,21 @@ class TrainingController < ApplicationController
     end
 
     def word_test_create
-        user_result_word = UserResultWord.new
+        tb_user_word_input = TbUserWordInput.new
+        tb_user_word_input.test_bank_word_user_input = params[:user_answer]
+        tb_user_word_input.test_bank_word_id = params[:test_id]
+        tb_user_word_input.save
 
-        user_result_word.user_answer = params[:user_answer]
-        user_result_word.test_word_id = params[:test_id]
+        tb_user_word_result = UserResultWord.new
+        tb_user_word_result.test_bank_word_user_input = params[:user_answer]
+        tb_user_word_result.test_bank_word_id = params[:test_id]
         if params[:user_answer] == params[:test_answer]
-            user_result_word.is_correct = 1
+            tb_user_word_result.is_correct = 1
         else
-            user_result_word.is_correct = 0
+            tb_user_word_result.is_correct = 0
         end
         #user_result_word.user_detail_id = current_user.user_detail.id
-        user_result_word.save
+        tb_user_word_result.save
     end
 
     def result

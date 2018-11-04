@@ -1,0 +1,3 @@
+class TbUserParagraphInput < ApplicationRecord
+    
+end

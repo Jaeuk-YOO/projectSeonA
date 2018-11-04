@@ -1,0 +1,3 @@
+class TbUserWordInput < ApplicationRecord
+    
+end
